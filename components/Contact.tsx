@@ -19,9 +19,8 @@ export default function Contact({}: Props) {
         formState: { errors } 
     } = useForm<Inputs>()
 
-    // TODO: Change method
     const onSubmit: SubmitHandler<Inputs> = (formData) => {
-        window.location.href = `mailto:atikahefendi31@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`
+        window.location.href = `https://mail.google.com/mail/u/${formData.email}/?view=cm&fs=1&to=atikahefendi31@gmail.com&su=${formData.subject}&body=${formData.message}. ${formData.name}, ${formData.email}`
     }
 
     return (
@@ -38,7 +37,7 @@ export default function Contact({}: Props) {
             <div className="flex flex-col space-y-10">
                 <h4 className="text-4xl font-semibold text-center">
                     Something pique your interest?{" "}
-                    <span className='underline decoration-[#39FF14]/50'>Let's talk.</span>
+                    <span className='underline decoration-[#39FF14]/50'>Lets talk.</span>
                 </h4>
 
                 <div className="space-y-10">

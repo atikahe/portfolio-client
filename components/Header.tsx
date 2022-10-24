@@ -1,10 +1,14 @@
 import React from 'react'
 import { SocialIcon } from 'react-social-icons'
 import { motion } from 'framer-motion'
+import { Social } from '../typings'
+import Link from 'next/link'
 
-type Props = {}
+type Props = {
+    socials: Social[]
+}
 
-export default function Header({}: Props): any {
+export default function Header({ socials }: Props): any {
     return (
         <header className='sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center '>
             <motion.div 
@@ -22,26 +26,14 @@ export default function Header({}: Props): any {
                 className='flex flex-row item-center'
             >
                 {/* Social icons */}
-                <SocialIcon 
-                    url="https://www.github.com/atikahe"
-                    fgColor='gray' 
-                    bgColor='transparent'
-                />
-                <SocialIcon 
-                    url="https://www.gitlab.com/atikah.efendi"
-                    fgColor='gray' 
-                    bgColor='transparent'
-                />
-                <SocialIcon 
-                    url="https://www.linkedin.com/in/atikah-efendi-1310"
-                    fgColor='gray' 
-                    bgColor='transparent'
-                />
-                <SocialIcon 
-                    url="https://www.dev.to/atikahe"
-                    fgColor='gray' 
-                    bgColor='transparent'
-                />
+                {socials.map((social) => (     
+                    <SocialIcon 
+                        key={social._id}
+                        url={social.url}
+                        fgColor='gray' 
+                        bgColor='transparent'
+                    />
+                ))}
             </motion.div>
 
             <motion.div
@@ -56,17 +48,21 @@ export default function Header({}: Props): any {
                     scale: 1
                 }}
                 transition={{ duration:1.5 }}
-                className='flex flex-row item-center text-gray-300'
+                className='flex flex-row item-center text-gray-300 align-center'
             >
-                <SocialIcon
-                    className='cursor-pointer'
-                    network='email'
-                    fgColor='gray'
-                    bgColor='transparent'
-                />
-                <p className='uppercase hidden md:inline-flex text-sm text-gray-400 cursor-pointer'>
-                    Get in touch
-                </p>
+                <Link href="#contact">
+                    <div>
+                        <SocialIcon
+                            className='cursor-pointer'
+                            network='email'
+                            fgColor='gray'
+                            bgColor='transparent'
+                        />
+                        <p className='uppercase hidden md:inline-flex text-sm text-gray-400 cursor-pointer'>
+                            Get in touch
+                        </p>
+                    </div>
+                </Link>
             </motion.div>
         </header>
     )

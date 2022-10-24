@@ -1,47 +1,51 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Experience as WorkExperience } from '../typings'
+import { urlFor } from '../sanity'
 
-type Props = {}
+type Props = {
+    experience: WorkExperience
+}
 
-function ExperienceCard({}: Props) {
+function ExperienceCard({ experience }: Props) {
     return (
-        <article className='flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-40 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden'>
+        <article className='flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-40 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden z-10'>
             <motion.img
                 initial={{ y: -100, opacity:0 }}
                 transition={{ duration: 1.2 }}
                 whileInView={{ opacity: 1, y: 0}}
                 viewport={{ once: true }}
                 className='w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center'
-                src="https://media-exp1.licdn.com/dms/image/C560BAQF8w_6Xhnl8_g/company-logo_200_200/0/1641374061663?e=1673481600&v=beta&t=ULZHvjwXDLViKRTl-A24yPAg2HEKA2QAgiBnHkGOpDs"
+                src={urlFor(experience?.companyImage).url()}
                 alt="" 
             />
 
             <div className='px-0 md:px-10'>
-                <h4 className='text-4xl font-light'>Back End Developer</h4>
-                <p className='font-bold text-2xl mt-1'>Anywhere.co</p>
+                <h4 className='text-4xl font-light'>{experience.jobTitle}</h4>
+                <p className='font-bold text-2xl mt-1'>{experience.company}</p>
                 <div className='flex space-x-2 my-2'>
-                    <img 
-                        className='h-10 w-10 rounded-full object-cover object-center'
-                        src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png" 
-                        alt=""
-                    />
-                    <img 
-                        className='h-10 w-10 rounded-full object-cover object-center'
-                        src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png" 
-                        alt=""
-                    />
-                    <img 
-                        className='h-10 w-10 rounded-full object-cover object-center'
-                        src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png" 
-                        alt=""
-                    />
+                    {experience.technologies.map(tech => (
+                        <img
+                            key={tech._id} 
+                            className='h-8 w-8 rounded-full object-cover object-center'
+                            src={urlFor(tech.image).url()}
+                            alt={tech.title}
+                            title={tech.title}
+                        />
+                    ))}
                 </div>
-                <p className='uppercase py-5 text-gray-300'>Started work... - Ended...</p>
-
-                <ul className='list-disc space-y-2 ml-5 text-lg'>
-                    <li>Summary points Summary points Summary points Summary points</li>
-                    <li>Summary points Summary points Summary points Summary points</li>
-                    <li>Summary points Summary points Summary points Summary points</li>
+                <p className='uppercase py-5 text-gray-300'>
+                    {new Date(experience.dateStarted).toDateString()}
+                    {" "}-{" "}
+                    {experience.isCurrentlyWorkingHere 
+                        ? "Present"
+                        : new Date(experience.dateEnded).toDateString()}
+                </p>
+                {/**/}
+                <ul className='list-disc space-y-2 ml-5 text-lg scrollbar-thin scrollbar-track-black scrollbar-thumb-[#39FF14]/30 max-h-96 max-w-42 overflow-y-scroll pr-10'>
+                    {experience.points.map((point, i) => (
+                        <li key={i}>{point}</li>
+                    ))}
                 </ul>
             </div>
         </article>
