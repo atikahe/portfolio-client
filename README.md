@@ -1,7 +1,7 @@
 # atk-portfolio
 The react front-end for my portfolio built with next.js and tailwind-css.
 
-Now, I'm under no delusion that I can achieve this look of a page within hours without any help. Credit where credit's due. That said, I want to give my biggest thanks to [Sonny Sangha](https://www.youtube.com/c/SonnySangha) for such a compact material on how to build this portfolio. Mad respect in how he's bringing me up to speed to all these unfamiliar stacks within hours. Go support his page!
+Now, I'm under no delusion that I can achieve this look of a page within hours without any help. Credit where credit's due. That said, I want to give my biggest thanks to [Sonny Sangha](https://www.youtube.com/c/SonnySangha) for such a compact material on how to build this portfolio. Mad respect in how he's bringing me up to speed to these unfamiliar technologies (typescript, tailwind, groq) within hours. Go support his page!
 
 ## Getting Started
 
