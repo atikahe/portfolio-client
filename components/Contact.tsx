@@ -34,28 +34,28 @@ export default function Contact({}: Props) {
                 Contact
             </h3>
 
-            <div className="flex flex-col space-y-10">
-                <h4 className="text-4xl font-semibold text-center">
+            <div className="flex flex-col space-y-10 w-full">
+                <h4 className="text-2xl sm:text-4xl font-semibold text-center">
                     Something pique your interest?{" "}
                     <span className='underline decoration-[#39FF14]/50'>Lets talk.</span>
                 </h4>
 
-                <div className="space-y-10">
+                <div className="space-y-5 sm:space-y-10">
                     <div className="flex items-center space-x-5 justify-center">
                         <EnvelopeIcon className="text-[#39FF14] h-7 w-7 animate-pulse" />
-                        <p className="text-2xl">atikahefendi31@gmail.com</p>
+                        <p className="text-lg sm:text-2xl">atikahefendi31@gmail.com</p>
                     </div>
 
                     <div className="flex items-center space-x-5 justify-center">
                         <MapPinIcon className="text-[#39FF14] h-7 w-7 animate-pulse" />
-                        <p className="text-2xl">Bandung, Indonesia</p>
+                        <p className="text-lg sm:text-2xl">Bandung, Indonesia</p>
                     </div>
 
                     <form
                         onSubmit={handleSubmit(onSubmit)}
-                        className="flex flex-col space-y-2 w-fit mx-auto"
+                        className="flex flex-col space-y-2 sm:w-fit sm:mx-auto"
                     >
-                        <div className="flex space-x-2">
+                        <div className="flex flex-col space-y-2 space-x-0 sm:flex sm:flex-row sm:space-x-2 sm:space-y-0">
                             <input 
                                 {...register('name')}  
                                 placeholder="Name" 
@@ -84,7 +84,7 @@ export default function Contact({}: Props) {
                         />
                         <button
                             type="submit" 
-                            className="bg-[#39FF14]/70 py-5 px-10 rounded-md text-[rgb(36,36,36)] font-bold text-lg"
+                            className="bg-[#39FF14]/70 py-3 sm:py-5 px-10 rounded-md text-[rgb(36,36,36)] font-bold text-lg"
                         >
                             Submit
                         </button>
