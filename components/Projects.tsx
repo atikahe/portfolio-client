@@ -28,7 +28,7 @@ export default function Projects({ projects }: Props) {
                                     transition={{ duration: 1.2 }}
                                     whileInView={{ y: 0, opacity: 1 }}
                                     viewport={{ once: true }}
-                                    className="w-32 h-32 xl:w-[200px] xl:h-[200px] object-cover object-center"
+                                    className="w-10 h-10 md:w-32 md:h-32 xl:w-[200px] xl:h-[200px] object-cover object-center"
                                     src={urlFor(project?.image).url()}
                                     alt="" 
                                 />
@@ -36,7 +36,7 @@ export default function Projects({ projects }: Props) {
                         }
 
                         <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-                                <h4 className="text-4xl font-semibold text-center">
+                                <h4 className="text-2xl sm:text-4xl font-semibold text-center">
                                     <a href={project?.linkToBuild} target="_blank" rel="noreferrer">
                                         <span className="underline decoration-[#39FF14]/50">
                                             Project {i + 1}{" "} of {projects.length}:
@@ -64,7 +64,7 @@ export default function Projects({ projects }: Props) {
                                 ))}
                             </div>
 
-                            <p className="text-lg text-center md:text-left">
+                            <p className="text-sm sm:text-lg text-center md:text-left">
                                 {project?.summary}
                             </p>
                         </div>
